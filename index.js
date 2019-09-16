@@ -1,15 +1,15 @@
 require("dotenv").config();
 const express = require("express");
 const massive = require("massive");
-const products_controller = require("./products_controller");
+const products_controller = require('./products_controller')
 
 const app = express();
 
 const { SERVER_PORT, CONNECTION_STRING } = process.env;
 
 massive(CONNECTION_STRING)
-  .then(dbInstance => {
-    app.set("db", dbInstance);
+  .then(db => {
+    app.set("db", db);
   })
   .catch(err => console.log(err));
 
